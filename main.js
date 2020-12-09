@@ -49,7 +49,7 @@ ${chalk.yellow('╚════════════════════�
 
 function logger(prefix, text) {
     console.log(
-        getFullHour() + ' ' +
+        getTime() + ' ' +
         chalk.bold(prefix) + ':',
         chalk.green(text + chalk.yellow.bold(" HAS BEEN SERVED"))
     );
@@ -60,7 +60,7 @@ function convertDirname(path) {
     return `${sliced[0]}/${sliced[1]}/${sliced[2]}/${sliced[3]}/`
 }
 
-function getFullHour() {
+function getTime() {
     let onlyTime = new Date().toISOString().split("T")[1].split(".")[0];
         onlyTime = onlyTime.split(':');
     return ( parseInt(onlyTime[0]) + 1 ) + ":" + onlyTime[1] + ":" + onlyTime[2];
