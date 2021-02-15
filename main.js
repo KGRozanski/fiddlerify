@@ -7,12 +7,17 @@ const chalk = require('chalk');
 let PORT = 3030;
 
 //CONFIGURE////////
-let service = 'Zdrowie';
-let version = '151';
-let pageType = '7';
+let service = 'Kobieta';
+let version = '184';
+let pageType = '99';
 ///////////////////
 
 // AWD
+app.get('/js', function (req, res) {
+    const filePath = `${convertDirname(__dirname)}projects/AWD/modules/deploy/webpack/production/${service}/${version}/pagetype${pageType}/main-dev.js`;
+    logger(req.url.substring(1).toUpperCase(), filePath);
+    res.sendFile(path.join(filePath));
+});
 app.get('/mobile', function (req, res) {
     const filePath = `${convertDirname(__dirname)}projects/AWD/modules/deploy/webpack/production/${service}/${version}/pagetype${pageType}/style-mobile-dev.css`;
     logger(req.url.substring(1).toUpperCase(), filePath);
@@ -65,3 +70,7 @@ function getFullHour() {
         onlyTime = onlyTime.split(':');
     return ( parseInt(onlyTime[0]) + 1 ) + ":" + onlyTime[1] + ":" + onlyTime[2];
 }
+
+//╭─────────────────────────────────────────────────────────────────╮
+//│                                                                 │
+//╰─────────────────────────────────────────────────────────────────╯
